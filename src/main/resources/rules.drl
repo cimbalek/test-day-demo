@@ -1,0 +1,12 @@
+dialect "java"
+
+import org.example.kie.api.testday.Person
+
+rule "Wage"
+  when
+    $person1 : Person(hourlyRate * wage > 100)
+    Person(name : firstName, surname : lastName, $person1 == this)
+  then
+    System.out.println("Hello" + " " + name + " " + surname + "!");
+    System.out.println("You are rich!");
+end
